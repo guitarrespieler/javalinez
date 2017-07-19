@@ -6,14 +6,26 @@ public class GameMatrix {
 
 	private Ball[][] matrix = new Ball[rowCount][colCount];
 	
+	public void addBall(Ball ball) throws Exception{
+		if(isValidIndexing(ball.getPos()))
+			throw new Exception("Hiba");//fixme valami normális hibakezelés kell!
+		
+		
+		
+		int row = ball.getPos().getY();
+		int col = ball.getPos().getX();
+		
+	}
+	
 	public boolean isFreePlace(Position pos){
-		if(isIndexingGood(pos)){
-			int row = pos.getY();
-			int col = pos.getX();
-			
-			if(matrix[row][col] == null)
-				return true;
-		}
+		if(!isValidIndexing(pos))
+			return false;
+		
+		int row = pos.getY();
+		int col = pos.getX();
+		
+		if(matrix[row][col] == null)
+			return true;
 		return false;
 	}
 	
@@ -21,7 +33,7 @@ public class GameMatrix {
 	 * @return true if the indexing is good
 	 * false anyways
 	 */
-	private boolean isIndexingGood(Position pos){
+	private boolean isValidIndexing(Position pos){
 		int x = pos.getX();
 		int y = pos.getY();
 		
