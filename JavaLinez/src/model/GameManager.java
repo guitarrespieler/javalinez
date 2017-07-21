@@ -24,17 +24,16 @@ public class GameManager {
 	}
 	
 	private void addRandomBall() {
-		int row = ThreadLocalRandom.current().nextInt(0, matrix.rowCount);
-		int col = ThreadLocalRandom.current().nextInt(0, matrix.colCount);
+		ThreadLocalRandom randomObj = ThreadLocalRandom.current();
+		int row = randomObj.nextInt(0, matrix.rowCount);
+		int col = randomObj.nextInt(0, matrix.colCount);
 		
 		while(!matrix.isFreePlace(new Position(col, row))){
-			row = ThreadLocalRandom.current().nextInt(0, matrix.rowCount);
-			col = ThreadLocalRandom.current().nextInt(0, matrix.colCount);
+			row = randomObj.nextInt(0, matrix.rowCount);
+			col = randomObj.nextInt(0, matrix.colCount);
 		}
 		
-		Color.
-		
-		matrix.addBall(new Ball());
+		matrix.addBall(new Ball(Color.getRandomColor(), new Position(col, row)));
 		
 	}
 

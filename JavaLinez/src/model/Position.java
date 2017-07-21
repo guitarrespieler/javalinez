@@ -2,14 +2,14 @@ package model;
 
 public class Position {
 
-	private int x;
-	private int y;
+	private int col;
+	private int row;
 	
 	public Position(){}
 	
-	public Position(int xPos, int yPos){
-		x = xPos;
-		y = yPos;
+	public Position(int column, int row){
+		col = column;
+		this.row = row;
 	}
 	
 	@Override
@@ -17,14 +17,14 @@ public class Position {
 		try{
 			Position other = (Position) obj;
 			
-			if((this.x == other.x) && (this.y == other.y))
+			if((this.col == other.col) && (this.row == other.row))
 				return true;
 		}catch(ClassCastException e){}		
 		return false;
 	}
 	
-	public int getX() {return x;}
-	public void setX(int x) {this.x = x;}
-	public int getY() {	return y;}
-	public void setY(int y) {this.y = y;}
+	public int getCol() {return col;}
+	public void setCol(int col) {this.col = col;}
+	public int getRow() {	return row;}
+	public void setRow(int row) {this.row = row;}
 }

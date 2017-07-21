@@ -14,8 +14,8 @@ public class GameMatrix {
 		if(!isValidIndexing(pos))
 			throw new IndexOutOfBoundsException();
 		
-		int row = pos.getY();
-		int col = pos.getX();
+		int row = pos.getCol();
+		int col = pos.getRow();
 		
 		return matrix[row][col];
 	}
@@ -24,23 +24,23 @@ public class GameMatrix {
 		if(!isValidIndexing(ball.getPos()))
 			throw new IndexOutOfBoundsException();
 		
-		int row = ball.getPos().getY();
-		int col = ball.getPos().getX();
+		int row = ball.getPos().getCol();
+		int col = ball.getPos().getRow();
 		
 		matrix[row][col] = ball;		
 	}
 	
 	public void removeBall(Position pos){
 		if(isValidIndexing(pos))
-			matrix[pos.getY()][pos.getX()] = null;
+			matrix[pos.getCol()][pos.getRow()] = null;
 	}
 	
 	public boolean isFreePlace(Position pos){
 		if(!isValidIndexing(pos))
 			return false;
 		
-		int row = pos.getY();
-		int col = pos.getX();
+		int row = pos.getRow();
+		int col = pos.getCol();valami nem okés a sor-oszlop összerendeléssel :D majd nézd meg Tibor
 		
 		if(matrix[row][col] == null)
 			return true;
@@ -52,8 +52,8 @@ public class GameMatrix {
 	 * false anyways
 	 */
 	private boolean isValidIndexing(Position pos){
-		int x = pos.getX();
-		int y = pos.getY();
+		int x = pos.getRow();
+		int y = pos.getCol();
 		
 		if(x < 0 || x >= colCount)
 			return false;
