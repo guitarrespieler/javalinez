@@ -1,20 +1,38 @@
 package model;
 
 public class GameMatrix {
-	private static final int rowCount = 9;
-	private static final int colCount = 9;
+	public static final int rowCount = 9;
+	public static final int colCount = 9;
 
-	private Ball[][] matrix = new Ball[rowCount][colCount];
+	private Ball[][] matrix;
 	
-	public void addBall(Ball ball) throws Exception{
-		if(isValidIndexing(ball.getPos()))
-			throw new Exception("Hiba");//fixme valami normális hibakezelés kell!
+	public GameMatrix(){
+		matrix = new Ball[rowCount][colCount];
+	}
+	
+	public Ball getBall(Position pos){
+		if(!isValidIndexing(pos))
+			throw new IndexOutOfBoundsException();
 		
+		int row = pos.getY();
+		int col = pos.getX();
 		
+		return matrix[row][col];
+	}
+	
+	public void addBall(Ball ball) throws IndexOutOfBoundsException{
+		if(!isValidIndexing(ball.getPos()))
+			throw new IndexOutOfBoundsException();
 		
 		int row = ball.getPos().getY();
 		int col = ball.getPos().getX();
 		
+		matrix[row][col] = ball;		
+	}
+	
+	public void removeBall(Position pos){
+		if(isValidIndexing(pos))
+			matrix[pos.getY()][pos.getX()] = null;
 	}
 	
 	public boolean isFreePlace(Position pos){
@@ -37,10 +55,10 @@ public class GameMatrix {
 		int x = pos.getX();
 		int y = pos.getY();
 		
-		if(x < 0 || x > colCount)
+		if(x < 0 || x >= colCount)
 			return false;
 		
-		if(y < 0 || y > rowCount)
+		if(y < 0 || y >= rowCount)
 			return false;
 		
 		return true;

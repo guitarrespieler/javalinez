@@ -7,6 +7,11 @@ public class Ball {
 	private Color color;
 	
 	private Position pos;
+	
+	public Ball(Color col, Position position){
+		color = col;
+		pos = position;
+	}
 
 	public Color getColor() {
 		return color;
