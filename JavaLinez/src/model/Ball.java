@@ -12,6 +12,17 @@ public class Ball {
 		color = col;
 		pos = position;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		try{
+			Ball other = (Ball) obj;
+			
+			if(color.equals(other.color)&& pos.equals(other.pos))
+				return true;
+		}catch(ClassCastException e){}
+		return false;
+	}
 
 	public Color getColor() {
 		return color;
