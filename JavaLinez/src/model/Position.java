@@ -7,9 +7,9 @@ public class Position {
 	
 	public Position(){}
 	
-	public Position(int column, int row){
-		col = column;
+	public Position(int row, int col){
 		this.row = row;
+		this.col = col;
 	}
 	
 	@Override

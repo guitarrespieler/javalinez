@@ -1,6 +1,5 @@
 package model;
 
-import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 import model.enums.Color;
@@ -16,7 +15,7 @@ public class GameManager {
 	}
 	
 	public void addRandomBalls(int numOfBalls){
-		if(numOfBalls <= 0 || numOfBalls > (matrix.rowCount*matrix.colCount))
+		if(numOfBalls <= 0 || numOfBalls > (GameMatrix.rowCount*GameMatrix.colCount))
 			return;
 		for(int i = 0; i < numOfBalls; i++){
 			addRandomBall();
@@ -25,16 +24,15 @@ public class GameManager {
 	
 	private void addRandomBall() {
 		ThreadLocalRandom randomObj = ThreadLocalRandom.current();
-		int row = randomObj.nextInt(0, matrix.rowCount);
-		int col = randomObj.nextInt(0, matrix.colCount);
+		int row = randomObj.nextInt(0, GameMatrix.rowCount);
+		int col = randomObj.nextInt(0, GameMatrix.colCount);
 		
 		while(!matrix.isFreePlace(new Position(col, row))){
-			row = randomObj.nextInt(0, matrix.rowCount);
-			col = randomObj.nextInt(0, matrix.colCount);
+			row = randomObj.nextInt(0, GameMatrix.rowCount);
+			col = randomObj.nextInt(0, GameMatrix.colCount);
 		}
 		
-		matrix.addBall(new Ball(Color.getRandomColor(), new Position(col, row)));
-		
+		matrix.addBall(new Ball(Color.getRandomColor(), new Position(col, row)));		
 	}
 
 	public Ball[][] getMap(){
