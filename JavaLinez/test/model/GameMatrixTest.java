@@ -58,5 +58,31 @@ public class GameMatrixTest {
 		assertEquals(true, matrix[row][col] == null);
 		assertEquals(true, gamematrix.getBall(pos) == null);		
 	}
+	
+	@Test
+	public void freePlaceTest(){		
+		Position pos = new Position(5,5);
+		
+		assertEquals(true, gamematrix.isFreePlace(pos));
+		
+		Ball ball = new Ball(Color.getRandomColor(), pos);
+		gamematrix.addBall(ball);
+		
+		assertEquals(false, gamematrix.isFreePlace(pos));
+	}
+	
+	@Test(expected = IndexOutOfBoundsException.class)
+	public void wrongPosTest1(){
+		Position pos = new Position(-5,-5);
+		
+		gamematrix.getBall(pos);
+	}
+	
+	@Test(expected = IndexOutOfBoundsException.class)
+	public void wrongPosTest2(){
+		Position pos = new Position(GameMatrix.rowCount,0);
+		
+		gamematrix.getBall(pos);
+	}
 
 }
