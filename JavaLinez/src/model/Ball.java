@@ -23,6 +23,11 @@ public class Ball {
 		}catch(ClassCastException e){}
 		return false;
 	}
+	
+	@Override
+	public String toString() {
+		return color.name() + ":" + pos.toString();
+	}
 
 	public Color getColor() {
 		return color;

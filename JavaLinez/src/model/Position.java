@@ -23,6 +23,11 @@ public class Position {
 		return false;
 	}
 	
+	@Override
+	public String toString() {
+		return "[" + this.row + ";" + this.col + "]";
+	}
+	
 	public int getCol() {return col;}
 	public void setCol(int col) {this.col = col;}
 	public int getRow() {	return row;}

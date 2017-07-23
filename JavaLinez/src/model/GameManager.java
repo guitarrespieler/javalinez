@@ -5,7 +5,7 @@ import java.util.concurrent.ThreadLocalRandom;
 import model.enums.Color;
 
 public class GameManager {
-	public static GameManager INSTANCE = new GameManager();
+	private static GameManager INSTANCE = new GameManager();
 	public static GameManager getInstance(){return INSTANCE;}	
 	
 	private Ball selectedBall;
@@ -14,6 +14,7 @@ public class GameManager {
 	
 	private GameManager(){
 		matrix = new GameMatrix();
+		selectedBall = null;
 	}
 	
 	public void addRandomBalls(int numOfBalls){
@@ -43,6 +44,7 @@ public class GameManager {
 	
 	public void removeEveryBalls(){
 		matrix = new GameMatrix();
+		selectedBall = null;
 	}
 	
 	public void SelectBall(Position pos){

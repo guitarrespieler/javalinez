@@ -73,4 +73,24 @@ public class GameMatrix {
 	public int getNumberOfBalls() {
 		return numberOfBalls;
 	}
+	
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		
+		for(int i = 0; i < rowCount; i++){
+			for (int j = 0; j < colCount; j++) {
+				Ball ball = matrix[i][j];
+				
+				if(ball != null)
+					sb.append(ball.toString());
+				else
+					sb.append("[NO BALL]");
+				
+				sb.append("\t");
+			}
+			sb.append("\n");
+		}
+		return sb.toString();
+	}
 }
