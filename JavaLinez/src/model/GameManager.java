@@ -35,13 +35,11 @@ public class GameManager {
 		matrix.addBall(new Ball(Color.getRandomColor(), new Position(col, row)));		
 	}
 
-	public Ball[][] getMap(){
-		return matrix.getMatrix();
+	public GameMatrix getMap(){
+		return matrix;
 	}
 	
-	
-	
-	
-	
-
+	public void removeEveryBalls(){
+		matrix = new GameMatrix();
+	}
 }

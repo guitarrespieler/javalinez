@@ -72,7 +72,5 @@ public class GameMatrix {
 
 	public int getNumberOfBalls() {
 		return numberOfBalls;
-	}	
-	
-	
+	}
 }
