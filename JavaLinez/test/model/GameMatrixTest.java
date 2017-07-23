@@ -29,7 +29,11 @@ public class GameMatrixTest {
 		
 		Ball ball = new Ball(Color.getRandomColor(), pos);
 		
+		assertEquals(0, gamematrix.getNumberOfBalls());
+		
 		gamematrix.addBall(ball);
+		
+		assertEquals(1, gamematrix.getNumberOfBalls());
 		
 		assertEquals(true, ball.equals(gamematrix.getBall(pos)));
 		
@@ -48,12 +52,15 @@ public class GameMatrixTest {
 		
 		Ball ball = new Ball(Color.getRandomColor(), pos);
 		
+		assertEquals(0, gamematrix.getNumberOfBalls());
 		gamematrix.addBall(ball);
+		assertEquals(1, gamematrix.getNumberOfBalls());
 		
 		assertEquals(true, matrix[row][col] != null);
 		assertEquals(true, gamematrix.getBall(pos) != null);
 		
 		gamematrix.removeBall(pos);
+		assertEquals(0, gamematrix.getNumberOfBalls());
 		
 		assertEquals(true, matrix[row][col] == null);
 		assertEquals(true, gamematrix.getBall(pos) == null);		
@@ -81,6 +88,13 @@ public class GameMatrixTest {
 	@Test(expected = IndexOutOfBoundsException.class)
 	public void wrongPosTest2(){
 		Position pos = new Position(GameMatrix.rowCount,0);
+		
+		gamematrix.getBall(pos);
+	}
+
+	@Test(expected = IndexOutOfBoundsException.class)
+	public void wrongPosTest3(){
+		Position pos = new Position(0, GameMatrix.colCount);
 		
 		gamematrix.getBall(pos);
 	}

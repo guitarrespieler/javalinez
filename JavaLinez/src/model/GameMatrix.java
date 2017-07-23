@@ -6,8 +6,12 @@ public class GameMatrix {
 
 	private Ball[][] matrix;
 	
+	private int numberOfBalls;
+	
 	public GameMatrix(){
 		matrix = new Ball[rowCount][colCount];
+		
+		numberOfBalls = 0;
 	}
 	
 	public Ball getBall(Position pos){
@@ -25,11 +29,15 @@ public class GameMatrix {
 			throw new IndexOutOfBoundsException();
 		
 		matrix[ball.getPos().getRow()][ball.getPos().getCol()] = ball;		
+		
+		numberOfBalls++;
 	}
 	
 	public void removeBall(Position pos){
-		if(isValidIndexing(pos))
+		if(isValidIndexing(pos)){
 			matrix[pos.getRow()][pos.getCol()] = null;
+			numberOfBalls--;
+		}
 	}
 	
 	public boolean isFreePlace(Position pos){
@@ -60,5 +68,11 @@ public class GameMatrix {
 
 	public Ball[][] getMatrix() {
 		return matrix;
+	}
+
+	public int getNumberOfBalls() {
+		return numberOfBalls;
 	}	
+	
+	
 }
