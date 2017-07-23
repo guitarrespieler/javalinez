@@ -8,6 +8,8 @@ public class GameManager {
 	public static GameManager INSTANCE = new GameManager();
 	public static GameManager getInstance(){return INSTANCE;}	
 	
+	private Ball selectedBall;
+	
 	private GameMatrix matrix;
 	
 	private GameManager(){
@@ -41,5 +43,13 @@ public class GameManager {
 	
 	public void removeEveryBalls(){
 		matrix = new GameMatrix();
+	}
+	
+	public void SelectBall(Position pos){
+		selectedBall = matrix.getBall(pos);
+	}
+	
+	public Ball getSelectedBall(){
+		return selectedBall;
 	}
 }
