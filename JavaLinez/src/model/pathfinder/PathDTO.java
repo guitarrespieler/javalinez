@@ -36,6 +36,10 @@ public class PathDTO {
 	public boolean isPathExist() {
 		return isPathExist;
 	}
+	
+	public void changeBooleanVal(){
+		isPathExist = !isPathExist;
+	}
 
 	public LinkedList<Position> getPath() {
 		return path;
