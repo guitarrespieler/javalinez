@@ -3,14 +3,14 @@ package model.graph.implementation;
 import java.util.TreeSet;
 
 import model.graph.graphinterface.Graph;
+import model.graph.graphinterface.Node;
 
 public class GraphImp<T> implements Graph<T>{
-	private NodeImpl<T> rootNode;
+	private Node<T> rootNode;
 	
 	private TreeSet<T> dataSet;
 	
-	public GraphImp(NodeImpl<T> rootNode){
-		this.rootNode = rootNode; 
+	public GraphImp(){
 		dataSet = new TreeSet<>();
 	}
 
@@ -18,8 +18,11 @@ public class GraphImp<T> implements Graph<T>{
 		return dataSet.contains(data);
 	}
 	
-	public NodeImpl<T> getRootNode(){
+	public Node<T> getRootNode(){
 		return rootNode;
 	}
 
+	public void addRootNode(T data) {
+		this.rootNode = new NodeImpl<>(data);		
+	}
 }

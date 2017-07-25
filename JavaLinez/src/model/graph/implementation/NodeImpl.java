@@ -10,23 +10,14 @@ public class NodeImpl<T> implements Node<T>{
 	
 	private T nodeData;
 	
-	private GraphImp<T> graph;
-	
-	
-	public NodeImpl(GraphImp<T> graph){
+	public NodeImpl(T data){
 		nextNodes = new LinkedList<>();
-		this.graph = graph;		
+		this.nodeData = data;
 	}
 	
 	public void addNode(T data){
-		if(graph.contains(data))
-			return;
-		
-		NodeImpl<T> newNode = new NodeImpl<T>(graph);
-		newNode.nodeData = data;
-		
+		NodeImpl<T> newNode = new NodeImpl<T>(data);		
 		nextNodes.add(newNode);
-		
 	}
 	
 	public List<Node<T>> getNextNodes(){

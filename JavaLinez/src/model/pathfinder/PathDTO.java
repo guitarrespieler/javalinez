@@ -12,9 +12,9 @@ public class PathDTO {
 	 * true if there is an existing path
 	 * between the actual position and the destination.
 	 */
-	private boolean isPathExist;
+	boolean isPathExist;
 	
-	private LinkedList<Position> path;
+	LinkedList<Position> path;
 	
 	public PathDTO(Position actual, Position dest){
 		this.actualPos = actual;
@@ -35,10 +35,6 @@ public class PathDTO {
 
 	public boolean isPathExist() {
 		return isPathExist;
-	}
-	
-	public void changeBooleanVal(){
-		isPathExist = !isPathExist;
 	}
 
 	public LinkedList<Position> getPath() {

@@ -44,9 +44,7 @@ public class GameMatrix {
 		if(!isValidIndexing(pos))
 			return false;
 		
-		if(matrix[pos.getRow()][pos.getCol()] == null)
-			return true;
-		return false;
+		 return matrix[pos.getRow()][pos.getCol()] == null;
 	}
 	
 	/**
