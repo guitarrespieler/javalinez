@@ -41,7 +41,7 @@ public class PathFinderTest {
 	}
 	
 	private void pathExists(Position actual, Position destination){
-		PathDTO dto = PathFinder.findPath(actual, destination);		
+		PathDTO dto = PathFinder.findPath(actual, destination, matrix);		
 		assertTrue(dto.isPathExist());
 	}
 
@@ -53,7 +53,7 @@ public class PathFinderTest {
 		
 		Position destPos = new Position(0,5);
 		
-		PathDTO dto = PathFinder.findPath(ball1.getPos(), destPos);
+		PathDTO dto = PathFinder.findPath(ball1.getPos(), destPos, matrix);
 		
 		assertTrue(dto.isPathExist());
 		

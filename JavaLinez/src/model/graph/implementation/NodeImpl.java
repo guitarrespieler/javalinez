@@ -28,4 +28,8 @@ public class NodeImpl<T> implements Node<T>{
 		return nodeData;
 	}
 
+	public int numberOfNextNodes() {
+		return nextNodes.size();
+	}
+
 }

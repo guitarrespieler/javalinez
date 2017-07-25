@@ -2,6 +2,7 @@ package model.pathfinder;
 
 import model.GameMatrix;
 import model.Position;
+import model.enums.Directions;
 import model.graph.graphinterface.Graph;
 import model.graph.graphinterface.Node;
 import model.graph.implementation.GraphImp;
@@ -19,7 +20,6 @@ public class PathFinder {
 		dto.isPathExist = true;
 		
 		
-		
 		return dto;
 	}
 
@@ -28,13 +28,40 @@ public class PathFinder {
 		
 		graph.addRootNode(actual);
 		
-		buildGraph(graph.getRootNode(), matrix);
+		buildGraph(graph, graph.getRootNode(), matrix);
 		
 		return graph;
 	}
 
-	private static void buildGraph(Node<Position> rootNode, GameMatrix matrix) {
+	private static void buildGraph(Graph<Position> graph, Node<Position> node, GameMatrix matrix) {
+		createNewNode(graph, node, matrix, Directions.North);
+		createNewNode(graph, node, matrix, Directions.South);
+		createNewNode(graph, node, matrix, Directions.East);
+		createNewNode(graph, node, matrix, Directions.West);
 		
+		if(node.numberOfNextNodes() == 0)
+			return;
 		
+		for(int i = 0; i < node.numberOfNextNodes(); i++){
+			Node<Position> nextNode = node.getNextNodes().get(i);
+			buildGraph(graph, nextNode, matrix);
+		}
+	}
+
+	private static void createNewNode(Graph<Position> graph, Node<Position> node, GameMatrix matrix, Directions dir) {
+		Position actual = node.getNodeData();
+		
+		int rowInc = dir.getRowIncrement();
+		int colInc = dir.getColIncrement();
+		
+		Position newPos = new Position(actual.getRow() + rowInc, actual.getCol() + colInc);
+		
+		if(!matrix.isFreePlace(newPos))
+			return;
+		
+		if(graph.contains(newPos))
+			return;
+		
+		node.addNode(newPos);		
 	}
 }

@@ -8,5 +8,7 @@ public interface Node<T> {
 	public T getNodeData();
 	
 	public List<Node<T>> getNextNodes();
+	
+	public int numberOfNextNodes();
 
 }
