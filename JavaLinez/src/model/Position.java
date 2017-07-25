@@ -1,9 +1,9 @@
 package model;
 
-public class Position {
+public class Position implements Comparable<Position>{
 
-	private int col;
 	private int row;
+	private int col;
 	
 	public Position(){}
 	
@@ -13,13 +13,28 @@ public class Position {
 	}
 	
 	@Override
+	public int compareTo(Position other) {
+		if(this.equals(other))
+			return 0;
+		if(this.row < other.row)
+			return -1;
+		return 1;
+		
+	}
+	
+	@Override
 	public boolean equals(Object obj) {
 		try{
 			Position other = (Position) obj;
 			
-			if((this.col == other.col) && (this.row == other.row))
-				return true;
+			return equals(other);
 		}catch(ClassCastException e){}		
+		return false;
+	}
+	
+	public boolean equals(Position other){
+		if((this.col == other.col) && (this.row == other.row))
+			return true;
 		return false;
 	}
 	

@@ -3,8 +3,10 @@ package model.graph.implementation;
 import java.util.LinkedList;
 import java.util.List;
 
-public class NodeImpl<T> {
-	private LinkedList<NodeImpl<T>> nextNodes;
+import model.graph.graphinterface.Node;
+
+public class NodeImpl<T> implements Node<T>{
+	private LinkedList<Node<T>> nextNodes;
 	
 	private T nodeData;
 	
@@ -27,10 +29,12 @@ public class NodeImpl<T> {
 		
 	}
 	
-	public List<NodeImpl<T>> getNextNodes(){
+	public List<Node<T>> getNextNodes(){
 		return nextNodes;
 	}
 	
-	public T getNodeData(){return nodeData;}
+	public T getNodeData(){
+		return nodeData;
+	}
 
 }

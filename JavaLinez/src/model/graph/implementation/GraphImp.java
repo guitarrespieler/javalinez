@@ -1,15 +1,17 @@
 package model.graph.implementation;
 
-import java.util.HashSet;
+import java.util.TreeSet;
 
-public class GraphImp<T> {
+import model.graph.graphinterface.Graph;
+
+public class GraphImp<T> implements Graph<T>{
 	private NodeImpl<T> rootNode;
 	
-	private HashSet<T> dataSet;
+	private TreeSet<T> dataSet;
 	
 	public GraphImp(NodeImpl<T> rootNode){
 		this.rootNode = rootNode; 
-		dataSet = new HashSet<>();
+		dataSet = new TreeSet<>();
 	}
 
 	public boolean contains(T data) {
