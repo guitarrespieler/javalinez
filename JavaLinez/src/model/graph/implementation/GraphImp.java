@@ -2,12 +2,12 @@ package model.graph.implementation;
 
 import java.util.HashSet;
 
-public class Graph<T> {
-	private Node<T> rootNode;
+public class GraphImp<T> {
+	private NodeImpl<T> rootNode;
 	
 	private HashSet<T> dataSet;
 	
-	public Graph(Node<T> rootNode){
+	public GraphImp(NodeImpl<T> rootNode){
 		this.rootNode = rootNode; 
 		dataSet = new HashSet<>();
 	}
@@ -16,7 +16,7 @@ public class Graph<T> {
 		return dataSet.contains(data);
 	}
 	
-	public Node<T> getRootNode(){
+	public NodeImpl<T> getRootNode(){
 		return rootNode;
 	}
 

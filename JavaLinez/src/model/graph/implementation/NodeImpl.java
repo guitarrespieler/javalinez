@@ -3,15 +3,15 @@ package model.graph.implementation;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Node<T> {
-	private LinkedList<Node<T>> nextNodes;
+public class NodeImpl<T> {
+	private LinkedList<NodeImpl<T>> nextNodes;
 	
 	private T nodeData;
 	
-	private Graph<T> graph;
+	private GraphImp<T> graph;
 	
 	
-	public Node(Graph<T> graph){
+	public NodeImpl(GraphImp<T> graph){
 		nextNodes = new LinkedList<>();
 		this.graph = graph;		
 	}
@@ -20,14 +20,14 @@ public class Node<T> {
 		if(graph.contains(data))
 			return;
 		
-		Node<T> newNode = new Node<T>(graph);
+		NodeImpl<T> newNode = new NodeImpl<T>(graph);
 		newNode.nodeData = data;
 		
 		nextNodes.add(newNode);
 		
 	}
 	
-	public List<Node<T>> getNextNodes(){
+	public List<NodeImpl<T>> getNextNodes(){
 		return nextNodes;
 	}
 	
