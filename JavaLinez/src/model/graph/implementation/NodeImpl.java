@@ -3,6 +3,7 @@ package model.graph.implementation;
 import java.util.LinkedList;
 import java.util.List;
 
+import model.graph.graphinterface.Graph;
 import model.graph.graphinterface.Node;
 
 public class NodeImpl<T> implements Node<T>{
@@ -15,7 +16,10 @@ public class NodeImpl<T> implements Node<T>{
 		this.nodeData = data;
 	}
 	
-	public void addNode(T data){
+	public void addNode(Graph<T> graph, T data){
+		if(graph.contains(data))
+			return;
+		graph.addDataToSet(data);
 		NodeImpl<T> newNode = new NodeImpl<T>(data);		
 		nextNodes.add(newNode);
 	}

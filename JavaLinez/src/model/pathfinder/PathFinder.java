@@ -1,5 +1,8 @@
 package model.pathfinder;
 
+import java.util.LinkedList;
+import java.util.List;
+
 import model.GameMatrix;
 import model.Position;
 import model.enums.Directions;
@@ -11,6 +14,11 @@ public class PathFinder {
 
 	public static PathDTO findPath(Position actual, Position destination, GameMatrix matrix) {
 		PathDTO dto = new PathDTO(actual, destination);
+		if(actual.equals(destination))
+			return dto;
+		
+		if(!matrix.isFreePlace(destination))
+			return dto;
 		
 		Graph<Position> graph = createGraph(actual, matrix);
 		
@@ -19,6 +27,9 @@ public class PathFinder {
 		
 		dto.isPathExist = true;
 		
+		List<Position> path = graph.getPathToThisNode(destination);
+		
+		dto.path = path;
 		
 		return dto;
 	}
@@ -62,6 +73,6 @@ public class PathFinder {
 		if(graph.contains(newPos))
 			return;
 		
-		node.addNode(newPos);		
+		node.addNode(graph, newPos);		
 	}
 }

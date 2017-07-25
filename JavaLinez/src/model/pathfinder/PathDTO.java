@@ -1,6 +1,7 @@
 package model.pathfinder;
 
 import java.util.LinkedList;
+import java.util.List;
 
 import model.Position;
 
@@ -14,7 +15,7 @@ public class PathDTO {
 	 */
 	boolean isPathExist;
 	
-	LinkedList<Position> path;
+	List<Position> path;
 	
 	public PathDTO(Position actual, Position dest){
 		this.actualPos = actual;
@@ -37,7 +38,7 @@ public class PathDTO {
 		return isPathExist;
 	}
 
-	public LinkedList<Position> getPath() {
+	public List<Position> getPath() {
 		return path;
 	}
 }
