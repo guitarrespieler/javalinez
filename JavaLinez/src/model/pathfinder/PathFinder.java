@@ -45,8 +45,8 @@ public class PathFinder {
 
 	private static void buildGraph(Graph<Position> graph, Node<Position> node, GameMatrix matrix) {
 		createNewNode(graph, node, matrix, Directions.North);
-		createNewNode(graph, node, matrix, Directions.South);
 		createNewNode(graph, node, matrix, Directions.East);
+		createNewNode(graph, node, matrix, Directions.South);
 		createNewNode(graph, node, matrix, Directions.West);
 		
 		if(node.numberOfNextNodes() == 0)
