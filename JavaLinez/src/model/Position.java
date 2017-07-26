@@ -33,9 +33,7 @@ public class Position implements Comparable<Position>{
 	}
 	
 	public boolean equals(Position other){
-		if((this.col == other.col) && (this.row == other.row))
-			return true;
-		return false;
+		return (this.col == other.col) && (this.row == other.row);
 	}
 	
 	@Override

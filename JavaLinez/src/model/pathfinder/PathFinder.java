@@ -1,6 +1,5 @@
 package model.pathfinder;
 
-import java.util.LinkedList;
 import java.util.List;
 
 import model.GameMatrix;

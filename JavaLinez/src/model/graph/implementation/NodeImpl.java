@@ -36,4 +36,8 @@ public class NodeImpl<T> implements Node<T>{
 		return nextNodes.size();
 	}
 
+	@Override
+	public String toString() {
+		return nodeData.toString();
+	}
 }

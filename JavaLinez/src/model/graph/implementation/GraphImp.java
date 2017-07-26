@@ -32,10 +32,30 @@ public class GraphImp<T> implements Graph<T>{
 	public List<T> getPathToThisNode(T data) {
 		LinkedList<T> path = new LinkedList<>();
 		
+		if(!contains(data))
+			return path;
 		
-		
+		findPath(rootNode, data, path);
 		
 		return path;
+	}
+	
+	private T findPath(Node<T> node, T data, List<T> path){
+		if(node.getNodeData().equals(data))
+			return data;
+		
+		if(node.numberOfNextNodes() == 0)
+			return null;
+		
+		for(int i = 0; i < node.numberOfNextNodes(); i++){
+			T tempData = findPath(node.getNextNodes().get(i), data, path);
+			
+			if(tempData != null){
+				path.add(node.getNodeData());
+				return tempData;
+			}
+		}
+		return null;
 	}
 
 	public void addDataToSet(T data) {
