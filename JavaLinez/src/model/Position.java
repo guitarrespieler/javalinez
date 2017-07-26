@@ -16,10 +16,17 @@ public class Position implements Comparable<Position>{
 	public int compareTo(Position other) {
 		if(this.equals(other))
 			return 0;
-		if(this.row < other.row)
+		//little magic.. needed something to compare 2 values in 1 object
+		Position referencePos = new Position(0,-1);
+		
+		if(referencePos.euclideanDistance(this) < referencePos.euclideanDistance(other))
 			return -1;
 		return 1;
 		
+	}
+	
+	private double euclideanDistance(Position pos){
+		return Math.sqrt((this.row-pos.row)*(this.row-pos.row) + (this.col-pos.col)*(this.col-pos.col));
 	}
 	
 	@Override
