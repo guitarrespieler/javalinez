@@ -25,8 +25,8 @@ public class GraphImp<T> implements Graph<T>{
 	}
 
 	public void addRootNode(T data) {
-		this.dataSet.add(data);
-		this.rootNode = new NodeImpl<>(data);		
+		dataSet.add(data);
+		rootNode = new NodeImpl<>(data);		
 	}
 
 	public List<T> getPathToThisNode(T data) {
@@ -37,12 +37,16 @@ public class GraphImp<T> implements Graph<T>{
 		
 		findPath(rootNode, data, path);
 		
+		path.removeFirst();//not needed the same pos
+		
 		return path;
 	}
 	
 	private T findPath(Node<T> node, T data, List<T> path){
-		if(node.getNodeData().equals(data))
+		if(node.getNodeData().equals(data)){
+			path.add(0, data);
 			return data;
+		}
 		
 		if(node.numberOfNextNodes() == 0)
 			return null;
@@ -51,7 +55,7 @@ public class GraphImp<T> implements Graph<T>{
 			T tempData = findPath(node.getNextNodes().get(i), data, path);
 			
 			if(tempData != null){
-				path.add(node.getNodeData());
+				path.add(0, node.getNodeData());
 				return tempData;
 			}
 		}
