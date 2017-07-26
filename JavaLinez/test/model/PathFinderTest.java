@@ -27,22 +27,34 @@ public class PathFinderTest {
 	@Test
 	public void pathExistsTest(){
 		Position pos = new Position(0,0);
-		Ball ball1 = new Ball(Color.getRandomColor(), pos);		
-		matrix.addBall(ball1);
+		Ball ballUnderTest = new Ball(Color.getRandomColor(), pos);		
+		matrix.addBall(ballUnderTest);
 		
-		Position destPos1 = new Position(0,5);		
-		pathExists(pos, destPos1);
-		
-		Position destPos2 = new Position(5,5);		
-		pathExists(pos, destPos2);
-		
-		Position destPos3 = new Position(GameMatrix.rowCount - 1 ,GameMatrix.colCount - 1);		
-		pathExists(pos, destPos3);
+		for(int i = 0; i < GameMatrix.rowCount; i++)
+			for (int j = 0; j < GameMatrix.colCount; j++) {
+				assertTrue(pathExists(ballUnderTest.getPos(), new Position(i,j)));
+			}
 	}
 	
-	private void pathExists(Position actual, Position destination){
+	@Test
+	public void pathDoesNotExistTest(){
+		Ball ballUnderTest = new Ball(Color.getRandomColor(), new Position(0,0));		
+		matrix.addBall(ballUnderTest);
+		
+		Ball ball2 = new Ball(Color.getRandomColor(), new Position(0,1));		
+		matrix.addBall(ball2);
+		Ball ball3 = new Ball(Color.getRandomColor(), new Position(1,0));		
+		matrix.addBall(ball3);
+		
+		for(int i = 0; i < GameMatrix.rowCount; i++)
+			for (int j = 0; j < GameMatrix.colCount; j++) {
+				assertFalse(pathExists(ballUnderTest.getPos(), new Position(i,j)));
+			}
+	}
+	
+	private boolean pathExists(Position actual, Position destination){
 		PathDTO dto = PathFinder.findPath(actual, destination, matrix);		
-		assertTrue(dto.isPathExist());
+		return dto.isPathExist();
 	}
 
 	@Test
@@ -72,6 +84,4 @@ public class PathFinderTest {
 			assertEquals(expectedPositions[i], actualPath.get(i));
 		}
 	}
-	
-
 }
