@@ -18,6 +18,11 @@ public class GameManagerTest {
 	}
 	
 	@Test
+	public void ballMovingTest(){
+		
+	}
+	
+	@Test
 	public void testAddRandomBalls() {
 		int numberOfNewBalls = 5;
 		testThisManyRandomBalls(numberOfNewBalls);

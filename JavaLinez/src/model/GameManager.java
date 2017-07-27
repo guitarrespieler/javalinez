@@ -54,4 +54,8 @@ public class GameManager {
 	public Ball getSelectedBall(){
 		return selectedBall;
 	}
+	
+	public void moveSelectedBall(Position destination){
+		
+	}
 }
