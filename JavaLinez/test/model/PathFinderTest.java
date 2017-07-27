@@ -32,6 +32,8 @@ public class PathFinderTest {
 		
 		for(int i = 0; i < GameMatrix.rowCount; i++)
 			for (int j = 0; j < GameMatrix.colCount; j++) {
+				if(i == 0 && j == 0)
+					continue;
 				assertTrue(pathExists(ballUnderTest.getPos(), new Position(i,j)));
 			}
 	}
