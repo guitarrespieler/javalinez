@@ -56,6 +56,7 @@ public class GameManager {
 	}
 	
 	public void moveSelectedBall(Position destination){
-		
+		matrix.moveBall(selectedBall, destination);		
+		selectedBall = null;
 	}
 }

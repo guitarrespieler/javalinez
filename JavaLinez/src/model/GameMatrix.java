@@ -33,11 +33,16 @@ public class GameMatrix {
 		numberOfBalls++;
 	}
 	
-	public void removeBall(Position pos){
-		if(isValidIndexing(pos)){
-			matrix[pos.getRow()][pos.getCol()] = null;
-			numberOfBalls--;
-		}
+	public Ball removeBall(Position pos){
+		if(!isValidIndexing(pos))
+			throw new IndexOutOfBoundsException();
+		
+		Ball ball = matrix[pos.getRow()][pos.getCol()];
+			
+		matrix[pos.getRow()][pos.getCol()] = null;
+		numberOfBalls--;
+		
+		return ball;
 	}
 	
 	public boolean isFreePlace(Position pos){
@@ -90,5 +95,11 @@ public class GameMatrix {
 			sb.append("\n");
 		}
 		return sb.toString();
+	}
+
+	public void moveBall(Ball selectedBall, Position destination) {
+		removeBall(selectedBall.getPos());		
+		selectedBall.setPos(destination);
+		addBall(selectedBall);			
 	}
 }
